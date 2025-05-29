@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IDForge</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
     <div class="landing-page">
         <nav>
-            <h1>IDForge</h1>
+            <h1>IDxForge</h1>
         </nav>
         <div class="btn-container">
             <button id="normal-btn">Normal ID-Card</button>
@@ -19,32 +23,34 @@
         </div>
         <div class="welcome">
             <h2>Welcome to IDForge</h2>
-            <p>Your one-stop solution for generating ID cards with ease.</p>
+            <p class="first">Your one-stop solution for generating ID cards with ease.</p>
+            <p>Choose between classic ID cards or go digital with smart QR code IDs — perfect for students, staff, and institutions looking to modernize identity management</p>
         </div>
         <div class="forms" style="display: none;">
 
             <div class="normalForm">
                 <form id="idCardForm">
                     <h1>ID-Card Generator</h1>
+                    <div class="line"></div>
                     <label for="name">College Name:</label>
                     <input type="text" id="collegename" name="name" minlength="5">
-
+                    
                     <label for="name">Student Name:</label>
                     <input type="text" id="name" name="name" minlength="5" maxlength="20">
-
+                    
                     <label for="idNumber">Roll Number:</label>
                     <input type="text" id="rollno" name="idNumber" minlength="1" maxlength="15">
-
+                    
                     <label for="issueDate">Date of Birth:</label>
                     <input type="date" id="dob" name="dob">
-
+                    
                     <label for="expiryDate">Phone No:</label>
                     <input type="number" id="phone" name="phone" minlength="10" maxlength="10">
                     <label for="photo">Upload Photo:</label>
                     <input type="file" id="photo" accept="image/jpeg, image/png, image/jpg">
-
-
                     <button id="button">Generate ID Card</button>
+                     <button id="downloadBtn">Download ID Card</button>
+
                 </form>
 
                 <div id="idCardPreview" class="card">
@@ -53,6 +59,7 @@
             <div class="qrForm">
                 <form id="idCardForm">
                     <h1>QR-Card Generator</h1>
+                    <div class="line"></div>
                     <label for="name">College Name:</label>
                     <input type="text" id="collegename" name="name" minlength="5">
 
@@ -72,6 +79,7 @@
 
 
                     <button id="button">Generate ID Card</button>
+                    <button id="downloadBtn">Download ID Card</button>
                 </form>
 
                 <div id="idCardPreview" class="card"></div>

@@ -1,70 +1,88 @@
-
-// let nbtn = document.getElementById('normal-btn');
-// let qrbtn = document.getElementById('qr-btn');
-// let output = document.getElementsByClassName('welcome');
-// let nofo = document.getElementsByClassName('normalForm');
-// let qrfo = document.getElementsByClassName('qrForm');
-
-// nbtn.addEventListener('click', function() {
-//     if (!nbtn.classList.contains('active')) {
-//         nbtn.classList.add('active');
-//         qrbtn.classList.remove('active');
-//         // nofo[0].style.display = 'flex';
-//         // qrfo[0].style.display = 'none';
-//         output[0].innerHTML = '';
-//         output[0].appendChild(nofo[0].cloneNode(true)); // Add normal form
-//     } else {
-//         nbtn.classList.remove('active');
-//         // nofo[0].style.display = 'none';
-//         output[0].innerHTML = '';
-
-//     }
-//     // output[0].innerHTML = "Welcome to the Normal Mode!";
-// });
-
-// qrbtn.addEventListener('click', function() {
-//     if (!qrbtn.classList.contains('active')) {
-//         qrbtn.classList.add('active');
-//         nbtn.classList.remove('active');
-//         qrfo[0].style.display = 'flex';
-//         nofo[0].style.display = 'none';
-//         output[0].innerHTML = '';
-//     } else {
-//         qrbtn.classList.remove('active');
-//         qrfo[0].style.display = 'none';
-//         output[0].innerHTML = '';
-//     }
-//     // output[0].innerHTML = "Welcome to the QR Code Mode!";
-// });
-
 let nbtn = document.getElementById('normal-btn');
 let qrbtn = document.getElementById('qr-btn');
-let output = document.getElementsByClassName('welcome')[0];
-let nofo = document.getElementsByClassName('normalForm')[0];
-let qrfo = document.getElementsByClassName('qrForm')[0];
+let output = document.querySelector('.welcome');
+let nofo = document.querySelector('.normalForm');
+let qrfo = document.querySelector('.qrForm');
+let lp = document.querySelector('.landing-page');
 
-nbtn.addEventListener('click', function() {
-    if (!nbtn.classList.contains('active')) {
-        nbtn.classList.add('active');
-        qrbtn.classList.remove('active');
 
-        output.innerHTML = ''; // clear old form
-        output.appendChild(nofo.cloneNode(true)); // add Normal Form clone
+// function showForm(formToClone) {
+//   let currentForm = output.querySelector('.animated-form');
+
+//   if (currentForm) {
+//     // Add fade-out and replace after animation ends
+//     currentForm.classList.add('fade-out');
+//     currentForm.addEventListener('animationend', () => {
+//       output.innerHTML = '';
+//       let newForm = formToClone.cloneNode(true);
+//       newForm.classList.add('animated-form');
+//       output.appendChild(newForm);
+//     }, { once: true });
+// } else {
+//     output.classList.add('animaded-form');
+//     let newForm = formToClone.cloneNode(true);
+//     newForm.classList.add('animated-form');
+//     output.innerHTML = '';
+//     output.appendChild(newForm);
+//   }
+// }
+
+function showForm(formToClone) {
+    let currentForm = output.querySelector('.animated-form');
+
+    if (currentForm) {
+        // If a form is showing, fade it out
+        currentForm.classList.add('fade-out');
+        currentForm.addEventListener('animationend', () => {
+            output.innerHTML = '';
+            let newForm = formToClone.cloneNode(true);
+            newForm.classList.add('animated-form', 'fade-in');
+            output.appendChild(newForm);
+        }, { once: true });
     } else {
-        nbtn.classList.remove('active');
-        output.innerHTML = ''; // remove form
+        // Welcome content: fade out entire .welcome contents
+        output.classList.add('fade-out');
+        output.addEventListener('animationend', () => {
+            output.classList.remove('fade-out');
+            output.innerHTML = '';
+            let newForm = formToClone.cloneNode(true);
+            newForm.classList.add('animated-form', 'fade-in');
+            output.appendChild(newForm);
+        }, { once: true });
     }
+}
+
+nbtn.addEventListener('click', function () {
+    if (!nbtn.classList.contains('active')) {
+        output.style.height = "auto";
+        if (!nbtn.classList.contains('active')) {
+            nbtn.classList.add('active');
+            nbtn.disabled = true;
+            qrbtn.classList.remove('active');
+            qrbtn.disabled = false;
+            output.style.height = 'auto';
+            showForm(nofo);
+        } else {
+            nbtn.classList.remove('active');
+            nbtn.disabled = false;
+            output.style.height = "120vh";
+        }
+
+    }
+
 });
 
-qrbtn.addEventListener('click', function() {
+qrbtn.addEventListener('click', function () {
     if (!qrbtn.classList.contains('active')) {
         qrbtn.classList.add('active');
+        qrbtn.disabled = true;
         nbtn.classList.remove('active');
-
-        output.innerHTML = ''; // clear old form
-        output.appendChild(qrfo.cloneNode(true)); // add QR Form clone
+        nbtn.disabled = false;
+        output.style.height = 'auto';
+        showForm(qrfo);
     } else {
         qrbtn.classList.remove('active');
-        output.innerHTML = ''; // remove form
+        qrbtn.disabled = false;
+        output.style.height = "120vh";
     }
 });
