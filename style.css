@@ -10,13 +10,22 @@
 .landing-page nav{
     background:linear-gradient(to right, #00c6ff, #0072ff);
     padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.landing-page img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-top: 10px;
 }
 .landing-page h1{
     font-family: cursive;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     font-size: 3rem;
     color: white;
+    padding-left: 10px;
 }
 
 /* button container  */
@@ -52,10 +61,22 @@
     width: 100%;
     height: 100%;
     padding: 20px 20px;
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.welcome img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    /* border-radius: 50%; */
+    margin-bottom: 10px;
+}
+.welcome .img2{
+    width: 170px;
+    height: 170px;
 }
 .landing-page .welcome h2{
     font-size: 4rem;
