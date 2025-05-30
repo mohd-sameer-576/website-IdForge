@@ -124,3 +124,47 @@ output.addEventListener('click', function (e) {
         });
     }
 });
+
+output.addEventListener('submit', function (e) {
+    if (e.target && e.target.id === 'qridCardForm') {
+        e.preventDefault();
+
+        const collegename = document.getElementById('collegename').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const branch = document.getElementById('Branch').value.trim();
+        const rollno = document.getElementById('rollno').value.trim();
+        const dob = document.getElementById('dob').value;
+        const phone = document.getElementById('phone').value.trim();
+        const inputphoto = document.getElementById('photo');
+        const file = inputphoto.files[0];
+
+        if (!collegename || !name || !rollno || !dob || !phone) {
+            alert("Please fill in all fields and upload a photo.");
+            return;
+        }
+
+        const idCardHTML = `
+            <div class="card">
+                <div class="card-header">
+                    <p><strong>${collegename.toUpperCase()}</strong></p>
+                </div>
+                <div class="card-body">
+                    <div class="body">
+                        <p><strong>Name:</strong> ${name}</p>
+                    </div>
+                        <div class="qrcontainer">
+                            <div id="qrcode"></div> <!-- QR code container -->
+                        </div>
+                </div>
+            </div>
+        `;
+        document.getElementById('idCardPreview').innerHTML = idCardHTML;
+
+        const qrData = `College Name: ${collegename}\nName: ${name}\nBranch: ${branch}\nRoll No: ${rollno}\nDOB: ${dob}\nPhone: ${phone}`;
+        new QRCode(document.getElementById('qrcode'), {
+            text: qrData,
+            width: 100,
+            height: 100,
+        });
+    }
+});

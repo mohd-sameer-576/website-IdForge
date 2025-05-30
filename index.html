@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="qrForm">
-                <form id="idCardForm">
+                <form id="qridCardForm">
                     <h1>QR-Card Generator</h1>
                     <div class="line"></div>
                     <label for="name">College Name:</label>
@@ -83,11 +83,8 @@
 
                     <label for="expiryDate">Phone No:</label>
                     <input type="number" id="phone" name="phone" minlength="10" maxlength="10">
-                    <label for="photo">Upload Photo:</label>
-                    <input type="file" id="photo" accept="image/jpeg, image/png, image/jpg">
-
-
-                    <button id="button">Generate ID Card</button>
+                
+                    <button id="qrbutton">Generate ID Card</button>
                     <button id="downloadBtn">Download ID Card</button>
                 </form>
 
@@ -99,6 +96,8 @@
     
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
 </body>
 
 </html>
