@@ -107,3 +107,20 @@ output.addEventListener('submit', function (e) {
         document.getElementById('idCardPreview').innerHTML = idCardHTML;
     }
 });
+output.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'downloadBtn') {
+        const idCardElement = document.getElementById('idCardPreview');
+
+        if (!idCardElement) {
+            alert("No ID Card to download.");
+            return;
+        }
+
+        html2canvas(idCardElement).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'id_card.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+});
