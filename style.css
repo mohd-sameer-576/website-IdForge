@@ -297,7 +297,7 @@ output{
     .landing-page .welcome p{
         font-size: 1.2rem;
     }
-    #idCardForm, .qrForm #qridCardForm{
+    #idCardForm .qrForm #qridCardForm{
         width: auto;
     }
     .normalForm, .qrForm{
